@@ -1,10 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  Navbar,
-  Feed,
-  VideoDetail,
-  SearchFeed,
-} from "./components";
+import { Feed, VideoDetail, SearchFeed } from "./components";
 import Layout from "./components/Layout";
 const router = createBrowserRouter([
   {
@@ -13,7 +8,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Feed /> },
       { path: "/video/:id", element: <VideoDetail /> },
-      
+
       { path: "/search/:searchTerm", element: <SearchFeed /> },
     ],
   },

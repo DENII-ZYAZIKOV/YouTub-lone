@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { categories } from "../utils/constants";
 import { Stack } from "@mui/material";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import HomeIcon from "@mui/icons-material/Home";
-import CodeIcon from "@mui/icons-material/Code";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
@@ -17,7 +16,6 @@ import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 
 const iconMap = {
   HomeIcon: <HomeIcon />,
-  CodeIcon: <CodeIcon />,
   MusicNoteIcon: <MusicNoteIcon />,
   SchoolIcon: <SchoolIcon />,
   GraphicEqIcon: <GraphicEqIcon />,
@@ -31,8 +29,7 @@ const iconMap = {
   DeveloperModeIcon: <DeveloperModeIcon />,
 };
 
-function SideBar() {
-  const [selectedCategory, setSelectedCategory] = useState("New");
+function SideBar({ selectedCategory, setSelectedCategory, setShowRickroll }) {
   return (
     <Stack
       sx={{ overflow: "auto", height: "90vh", flexDirection: { md: "column" } }}
@@ -43,8 +40,12 @@ function SideBar() {
           className="category-btn"
           key={category.name}
           style={{
-            background: category.name === "New" ? "#FC1503" : "",
+            background: category.name === selectedCategory ? "#FC1503" : "",
             color: "white",
+          }}
+          onClick={() => {
+            setSelectedCategory(category.name);
+            setShowRickroll(true);
           }}
         >
           <span
@@ -55,7 +56,9 @@ function SideBar() {
           >
             {iconMap[category.icon]}
           </span>
-          <span style={{ opacity: category.name === "New" ? 1 : 0.8 }}>
+          <span
+            style={{ opacity: category.name === selectedCategory ? 1 : 0.8 }}
+          >
             {category.name}
           </span>
         </button>

@@ -3,7 +3,6 @@ import {
   Navbar,
   Feed,
   VideoDetail,
-  ChannelDetail,
   SearchFeed,
 } from "./components";
 import Layout from "./components/Layout";
@@ -14,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Feed /> },
       { path: "/video/:id", element: <VideoDetail /> },
-      { path: "/channel/:id", element: <ChannelDetail /> },
+      
       { path: "/search/:searchTerm", element: <SearchFeed /> },
     ],
   },
